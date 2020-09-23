@@ -304,6 +304,11 @@ where
         Self::build(query, mutation, subscription).finish()
     }
 
+    /// Returns SDL(Schema Definition Language) of this schema.
+    pub fn sdl(&self) -> String {
+        self.0.env.registry.export_sdl(false)
+    }
+
     // TODO: Remove the allow
     #[allow(clippy::type_complexity)]
     fn prepare_request(
